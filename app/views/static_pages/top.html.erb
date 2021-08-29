@@ -10,27 +10,28 @@
       <p>TaskAppは簡易ToDo管理ツールです。</p>
       <p>↓↓初めてのご利用↓↓</p>
         <a class="btn btn-lg btn-success" href="/signup">アカウント作成</a>
-        <div style="margin-top: 10px;">
-          <a class="btn btn-danger" href="/guest-admin/login">ゲストログイン（管理権限）</a>
-          <a class="btn btn-warning" href="/guest/login">ゲストログイン（一般権限）</a>
-        </div>
     </div>
   </div>
 
   <div class="col-md-4">
     <h1>ログイン</h1>
-    <form action="/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="jcFmodLgxiny9mdnoT6w1I9e7wOOAa92LTgmObgFG4Rk1EQVdcBhSt97T0r9jcUwbtmkItxZ1NCJjmRPdhzVPA==">
-        <label class="label-form" for="session_email">メールアドレス</label>
-        <input class="form-control" type="email" name="session[email]">
+      <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
   
-        <label class="label-form" for="session_password">パスワード</label>
-        <input class="form-control" type="password" name="session[password]">
-        
-        <label class="checkbox inline checkbox-login" for="remember-me">
-          <input name="session[remember_me]" type="hidden" value="0"><input id="remember-me" type="checkbox" value="1" name="session[remember_me]">
+        <%= f.label :email, class: "label-login" %>
+        <%= f.email_field :email, class: 'form-control' %>
+  
+        <%= f.label :password, class: "label-login" %>
+        <%= f.password_field :password, class: 'form-control' %>
+  
+        <%= f.label :remember_me, class: "checkbox inline checkbox-login", for: "remember-me" do %>
+          <%= f.check_box :remember_me, id: "remember-me" %>
           <span>ログイン情報を記憶する</span>
-</label>        
-        <input type="submit" name="commit" value="ログイン" class="btn btn-primary btn-block btn-form" data-disable-with="ログイン">
-</form> 
+        <% end %>
+  
+        <%= f.submit "ログイン", class: "btn btn-primary btn-block btn-login" %>
+      <% end %>
+ 
+  </div>
 </div>
-
+</div>
+</div>
