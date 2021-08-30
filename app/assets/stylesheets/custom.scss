@@ -49,12 +49,20 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+.jumbotron {
+  background-color:#fff;
+}
+#top-main-title{
+  font-style:italic;
+  font-weight:bold;
+}
 
 /* ヘッダー */
 
 #header {
   background-color: teal;
 }
+
 
 #logo {
   float: left;
@@ -76,6 +84,7 @@ p {
 #list{
   font-weight:bold;
   color:#fff;
+  background-color:teal;
 }
 #list:hover {
   color:#808080;
