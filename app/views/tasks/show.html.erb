@@ -6,15 +6,15 @@
       <thead>
         <tr>
           <th><%= User.human_attribute_name :name %></th>
-          <th><%= User.human_attribute_name :email %></th>
+          <th><%= User.human_attribute_name :detail %></th>
           <th><%= User.human_attribute_name :created_at %></th>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <td><%= @user.name %></td>
-          <td><%= @user.email %></td>
+          <td><%= @task.name %></td>
+          <td><%= @task.detail %></td>
           <td><%= @user.created_at %></td>
         </tr>
       </tbody>

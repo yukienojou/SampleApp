@@ -13,7 +13,7 @@
 
     <% @task.each do |task| %>
       <tr>
-        <td><!%= link_to task.name, %></td>
+        <td><%= link_to task.name,task_path(current_user)%></td>
         <td>
           <!--<!% if current_user.admin? && !current_user?(user) %>-->
             <%= link_to "削除", '#', method: :delete,
