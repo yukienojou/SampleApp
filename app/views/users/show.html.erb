@@ -1,22 +1,28 @@
 <% provide(:title, @user.name) %>
-
+<h1>プロフィール</h1>
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <table class="table table-borded">
       <thead>
         <tr>
-          <th><%= User.human_attribute_name :name %></th>
-          <th><%= User.human_attribute_name :email %></th>
-          <th><%= User.human_attribute_name :created_at %></th>
+          <th class="active col-md-3">ID</th>
+          <td class="col-md-9">1</td>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <td><%= @user.name %></td>
-          <td><%= @user.email %></td>
-          <td><%= @user.created_at %></td>
-        </tr>
+          <th class="active">名前</th>
+          <td>管理者</td>
+        </tr>  
+         <tr>
+            <th class="active">メールアドレス</th>
+            <td>sample@email.com</td>
+          </tr>
+          <tr>
+            <th class="active">作成日</th>
+            <td>2019/07/08 23:21</td>
+          </tr>
       </tbody>
     </table>
   </div>    
