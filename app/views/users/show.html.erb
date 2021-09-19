@@ -2,26 +2,26 @@
 <h1>プロフィール</h1>
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-    <table class="table table-borded table-condensed user-table">
+    <table class="table table-bordered table-condensed id=user-table">
       <thead>
         <tr>
-          <th class="active col-md-3"><%=@user_id %></th>
-          <td class="col-md-9">1</td>
+          <th class="active col-md-3">ID</th>
+          <td class="col-md-9"><%= @user.id %></td>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <th class="active"><%= @user.name %></th>
-          <td><%= current_user %></td>
+          <th class="active">名前</th>
+          <td><%= @user.name %></td>
         </tr>  
          <tr>
-            <th class="active"><%= @email %></th>
-            <td><%= @email %></td>
+            <th class="active">メールアドレス</th>
+            <td><%= @user.email %></td>
           </tr>
           <tr>
             <th class="active">作成日</th>
-            <td><%= @current_date %></td>
+            <td><%= @user.created_at %></td>
           </tr>
       </tbody>
     </table>
