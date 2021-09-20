@@ -1,23 +1,33 @@
 <% provide(:title, @task.name) %>
-
+<h1>タスク詳細</h1>
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <table class="table table-borderd">
       <thead>
         <tr>
-          <th><%= User.human_attribute_name :name %></th>
-          <th><%= User.human_attribute_name :email %></th>
-          <th><%= User.human_attribute_name :created_at %></th>
+          <th class="active col-md-3">ID</th>
+          <td class="col-md-9"><%= @task.id %></td>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-         <td><%= @task.name %></td>
-          <td><%= @task.detail %></td>
-          <td><%= @user.created_at %></td>
-        </tr>
-       </tbody>
+          <th class="active">名称</th>
+          <td><%= @task.name %></td>
+        </tr>  
+         <tr>
+            <th class="active">詳細</th>
+            <td><%= @task.detail%></td>
+          </tr>
+          <tr>
+            <th class="active">作成日</th>
+            <td><%= @task.created_at %></td>
+          </tr>
+          <tr>
+            <th class="active">更新日</th>
+            <td><%= @task.update_attributes %></td>
+          </tr>
+      </tbody>
     </table>
   </div>    
 </div>
