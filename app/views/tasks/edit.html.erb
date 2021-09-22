@@ -5,7 +5,7 @@
   <div class="col-md-6 col-md-offset-3">
   
     <%= form_with(model: @task, local: true) do |f| %>
-    <%= link_to "タスク編集",edit_task_path(@task.id), class: "btn btn-primary btn-block btn-signup" id:"list" %></li>
+    <%= link_to "タスク編集", edit_task_path(id:task), class: "btn btn-primary  btn-signup" id:"list" %></li>
      <%= f.label:name, class:"label-form" %>
      <%= f.text_field:name, class:"form-control" %>
      
