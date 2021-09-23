@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   end
   
   def edit
-    
+    @task = Task.find(params[:id])
   end
   
   def show
@@ -25,6 +25,23 @@ class TasksController < ApplicationController
       redirect_to @task
     else
       render :new
+    end
+  end
+  
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    flash[:success] = "#{@task.name}のデータを削除しました。"
+    redirect_to tasks_url
+  end
+  
+  def update
+    @task = Task.find(params[:id])
+    if @task.update_attributes(task_params)
+      flash[:success] = "タスク情報を更新しました。"
+      redirect_to @task
+    else
+      render :edit      
     end
   end
   
