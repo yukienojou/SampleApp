@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-     @users = User.paginate(page: params[:page])
+  @users = User.paginate(page: params[:page], per_page: 20)
   end
 
   def show
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
     end
 
     # アクセスしたユーザーが現在ログインしているユーザーか確認します。
-    def current_user
+    def correct_user
       redirect_to(root_url) unless current_user?(@user)
     end
 end
