@@ -68,6 +68,10 @@ class TasksController < ApplicationController
       end
     end
     
+     def set_user
+      @user = User.find(params[:id])
+    end
+    
     # アクセスしたユーザーが現在ログインしているユーザーか確認します。
     def correct_user
       @user = User.find(params[:id])
