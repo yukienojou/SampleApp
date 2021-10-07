@@ -3,15 +3,20 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
-  
+
   def index
   @users = User.paginate(page: params[:page], per_page: 20)
   end
 
   def show
+    
   end
 
   def new
+    if logged_in? && !current_user.admin?
+      flash[:info] = 'すでにログインしています。'
+      redirect_to current_user
+    end
     @user = User.new
   end
 
@@ -46,8 +51,12 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+     def user_params
+      params.require(:user).permit(:name, :email, :department, :password, :password_confirmation)
+    end
+
+    def basic_info_params
+      params.require(:user).permit(:department, :basic_time, :work_time)
     end
 
     # beforeフィルター
