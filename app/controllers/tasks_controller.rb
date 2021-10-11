@@ -1,10 +1,8 @@
 class TasksController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :logged_in_user, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:edit, :update]
- 
- 
- 
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: %i(show edit update destroy)
+  before_action :logged_in_user
+
  
   def new
     @task = Task.new
@@ -25,7 +23,6 @@ class TasksController < ApplicationController
   
   
   def create
-    @user = current_user
     @task = @user.tasks.new(task_params)
     if @task.save
       flash[:success] = '新規作成に成功しました。'
@@ -69,13 +66,14 @@ class TasksController < ApplicationController
     end
     
      def set_user
-      @user = User.find(params[:id])
-    end
+       @user = User.find(params[:user_id])
+     end
     
-    # アクセスしたユーザーが現在ログインしているユーザーか確認します。
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless @user == current_user
+     def set_task
+      unless @task = @user.tasks.find_by(id: params[:id])
+        flash[:danger] = "権限がありません。"
+        redirect_to user_tasks_url @user
+      end
     end
 end
   

@@ -5,7 +5,7 @@
   <div class="col-md-6 col-md-offset-3">
   
     <%= form_with(model: @task, local: true) do |f| %>
-     <%= render partial: 'shared/error_messages', locals: { obj: @task } %>
+     <!--<!%= render partial: 'shared/error_messages', locals: { obj: @task } %>-->
      
      <%= f.label:name, class:"label-form" %>
      <%= f.text_field:name, class:"form-control" %>
