@@ -6,11 +6,15 @@ class TasksController < ApplicationController
  
   def new
     @task = Task.new
+    @task = user_tasks_path（@user）
+    
   end
   
   def index
     @task =Task.all
+ 
   end
+  
 
   def edit
    @task = Task.find(params[:id])
@@ -74,6 +78,5 @@ class TasksController < ApplicationController
         flash[:danger] = "権限がありません。"
         redirect_to user_tasks_url @user
       end
-    end
-end
-  
+     end
+  end
