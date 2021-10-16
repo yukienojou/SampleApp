@@ -2,12 +2,11 @@ class TasksController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_task, only: %i(show edit update destroy)
   before_action :logged_in_user
-
+  before_action :current_user
  
   def new
     @task = Task.new
-    @task = user_tasks_path（@user）
-    
+    @user = current_user
   end
   
   def index
@@ -30,7 +29,7 @@ class TasksController < ApplicationController
     @task = @user.tasks.new(task_params)
     if @task.save
       flash[:success] = '新規作成に成功しました。'
-      redirect_to @task
+      redirect_to user_tasks_url @user
     else
       render :new
     end
