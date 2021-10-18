@@ -6,10 +6,10 @@
    <%= form_with(model: @task, url: user_tasks_path(@user), local: true) do |f| %>
      <%= render partial: 'shared/error_messages', locals: { obj: @task } %>
      
-     <%= f.label:name, class:"label-form" %>
+     <%= f.label:名称, class:"label-form" %>
      <%= f.text_field:name, class:"form-control" %>
      
-     <%= f.label:detail, class:"label-form" %>
+     <%= f.label:詳細, class:"label-form" %>
      <%= f.text_area:detail, size:"40x5",class:"form-control" %>
      
       <%= f.submit "新規登録", class: "btn btn-primary  btn-signup" %>
