@@ -5,11 +5,12 @@
   <div class="col-md-6 col-md-offset-3">
   
     <%= form_with(model: @task, url: user_task_path(@user, @task), local: true, method: :patch) do |f| %>
-
-     <%= f.label:name, class:"label-form" %>
+     <%= render partial: 'shared/error_messages', locals: { obj: @task } %>
+      
+     <%= f.label:名称, class:"label-form" %>
      <%= f.text_field:name, class:"form-control" %>
      
-     <%= f.label:detail, class:"label-form" %>
+     <%= f.label:詳細, class:"label-form" %>
      <%= f.text_area:detail, size:"40x5",class:"form-control" %>
      
       <%= f.submit "更新", class: "btn btn-primary btn-signup" %>

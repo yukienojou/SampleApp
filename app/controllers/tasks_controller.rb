@@ -10,7 +10,7 @@ class TasksController < ApplicationController
   end
   
   def index
-    @task= @user.tasks
+    @task= @user.tasks.order(created_at: :desc)
  
   end
   
@@ -41,13 +41,12 @@ class TasksController < ApplicationController
     redirect_to user_tasks_url @user
   end
   
-  def update
-    @task = Task.find(params[:id])
+ def update
     if @task.update_attributes(task_params)
-      flash[:success] = "タスク情報を更新しました。"
-      redirect_to @task
+      flash[:success] = "タスクを更新しました。"
+      redirect_to user_task_url(@user, @task)
     else
-      render :edit      
+      render :edit
     end
   end
   
