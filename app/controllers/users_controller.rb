@@ -87,7 +87,7 @@ class UsersController < ApplicationController
     end
     
       # 管理権限者、または現在ログインしているユーザーを許可します。
-    def admin_or_currect_user
+    def admin_or_current_user
       @user = User.find(params[:user_id]) if @user.blank?
       unless current_user?(@user) || current_user.admin?
         flash[:danger] = "編集権限がありません。"
